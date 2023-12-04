@@ -12,7 +12,7 @@ case class read_text_folder() {
     // cas ou on a un fichier en cours d'utilisation et un fichier non utilisé dans le noeud.
     // Utilisation de FileSelector pour filtrer les fichiers
     val fileSelector = new FileSelector()
-    val prohibitedWords = List("mort", "panne", "utilisation")
+    val prohibitedWords = List("corrompu", "panne", "utilisation")
     val directoryPath1 = "H:/Desktop/spark_courses_project/Projet_Scala/src/noeud(1)/"
     val directoryPath2 = "H:/Desktop/spark_courses_project/Projet_Scala/src/noeud(2)/"
     val FilterededFiles1 = fileSelector.FilterFiles(directoryPath1, prohibitedWords)
@@ -25,7 +25,8 @@ case class read_text_folder() {
       endutilfile.rollBackFileName_utilisation("H:/Desktop/spark_courses_project/Projet_Scala/src/noeud(2)/", "utilisation", "3")
       endutilfile.rollBackFileName_utilisation("H:/Desktop/spark_courses_project/Projet_Scala/src/noeud(2)/", "utilisation", "4")
     }
-    val excludedWords = List("mort", "panne")
+
+    val excludedWords = List("corrompu", "panne", "utilisation")
     var FilterededFiles = fileSelector.FilterFiles(directoryPath1, excludedWords)
     // Logique de sélection et de rechargement des fichiers
     if (FilterededFiles.isEmpty) {
@@ -58,7 +59,6 @@ case class read_text_folder() {
         }
       }
     }
-
 
     if (FilterededFiles.nonEmpty) {
       val validFile = FilterededFiles.head

@@ -4,14 +4,24 @@ import scala.util.Random
 
 class FileRenamer {
   def renameFileRandomly(directory: String, oldName: String): String = {
-    val randomSuffix = List("mort", "panne", "utilisation", "utilisationt")(Random.nextInt(4))
+    val randomSuffix = List("corrompu", "panne", "utilisation", "utilisation")(Random.nextInt(4))
     val newName = oldName.stripSuffix(".txt") + s"($randomSuffix).txt"
     val sourceFile = new File(directory, oldName)
     val destFile = new File(directory, newName)
 
     if (sourceFile.exists() && sourceFile.renameTo(destFile)) {
-      println("Le fichier utilisé est desormais indisponnible pour cause de " +s"$randomSuffix" +" du fichier.")
-      newName
+      if (s"$randomSuffix" == "panne") {
+        println("Le fichier utilisé est desormais indisponnible pour cause de " + s"$randomSuffix" + " du fichier.")
+        newName
+      }
+      if (s"$randomSuffix" == "utilisation") {
+        println("Le fichier utilisé est desormais indisponnible pour cause d'" + s"$randomSuffix" + " du fichier.")
+        newName
+      }
+      else{
+        println("Le fichier utilisé est desormais indisponnible car le fichier est " + s"$randomSuffix" + ".")
+        newName
+      }
     } else {
       throw new Exception("erreur statut du fichier incertain")
     }

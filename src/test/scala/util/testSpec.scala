@@ -2,7 +2,7 @@ package util
 
 import com.{count_characters, read_text_folder}
 import org.apache.spark.sql.{Row, SparkSession}
-import org.apache.spark.sql.functions.desc
+
 import org.apache.spark.sql.types.{StringType, StructField, StructType}
 import org.scalatest.funsuite.AnyFunSuite
 
